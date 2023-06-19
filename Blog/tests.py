@@ -20,3 +20,5 @@ class HomePageTest(TestCase):
         self.assertIn('<title>Сайт Алексея Стогова</title>', html)
         self.assertIn('<h1>Алексей Стогов</h1>', html)
         self.assertTrue(html.endswith('</html>'))
+
+

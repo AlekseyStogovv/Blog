@@ -13,14 +13,31 @@ class BasicInstallTest(unittest.TestCase):
     def test_home_page_title(self):
         #В браузере открылся сайт по адресу .. в заголовке "Сайт .."
         self.browser.get('http://127.0.0.1:8000')
-        self.assertIn('Алексей Стогов', self.browser.title)
+        self.assertIn('Сайт Алексея Стогова', self.browser.title)
 
 
     def test_home_page_header(self):
         # В шапке сайта написано "Алексей .."
         self.browser.get('http://127.0.0.1:8000')
         header = self.browser.find_element(By.TAG_NAME, 'h1')
-        self.assertIn('Сайт Алексея Стогова', header.text)
+        self.assertIn('Алексей Стогов', header.text)
+
+
+    def test_home_page_blog(self):
+        # под шапкой расположен блог со статьями.
+
+        article_list = self.browser.find_element_by_class_name('article-list')
+        self.assertTrue(article_list)
+
+
+    def test_home_page_articles_look_correct(self):
+        #У каждой статьи есть заголовок и один абзац с текстом
+        self.browser.get('http://127.0.0.1:8000')
+        article_title = self.browser.find_element_by_class_name('article-title')
+        article_summary = self.browser.find_element_by_class_name('article-summary')
+        self.assertTrue(article_title)
+        self.assertTrue(article_summary)
+
 
 
 
