@@ -1,0 +1,15 @@
+<html>
+    <title>Сайт Алексея Стогова</title>
+    <h1>Алексей Стогов</h1>
+    <div class="article-list">
+        <div class="article">
+            {% for article in articles %}
+                <div class="article">
+                        <h1 class="article-title">{{ article.title}}</h1>
+                        <p class="article-summary">{{ article.summary}}
+                    </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</html>
