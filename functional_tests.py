@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import unittest
+from datetime import datetime
+from time import sleep
 
 class BasicInstallTest(unittest.TestCase):
 
@@ -41,6 +43,20 @@ class BasicInstallTest(unittest.TestCase):
         self.assertTrue(article_title)
         self.assertTrue(article_summary)
 
+    def test_home_page_article_title_link_leads_to_article_page (self):
+        # Кликнув по заголовку открывается статья с полным текстом
+        self.browser.get('http://127.0.0.1:8000')
+        article_title = self.browser.find_element(
+            By.CLASS_NAME,
+            'article-title')
+        article_title_text = article_title.text
+
+        article_link = article_title.find_element(By.TAG_NAME, 'a')
+        self.browser.get(article_link.get_attribute('href'))
+        article_page_title = self.browser.find_element(
+            By.CLASS_NAME,
+            'article-title')
+        self.assertEqual(article_title_text, article_page_title.text)
 
 
 
