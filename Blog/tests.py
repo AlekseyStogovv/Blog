@@ -19,9 +19,8 @@ class ArticlePageTest(TestCase):
             slug='oo-lya-lya'
         )
 
-
-        request = HttpRequest()
-        response = article_page(request, 'oo-lya-lya')
+        url = reverse('article_page', kwargs={'slug': 'slug-1'})
+        response = self.client.get(url)
         html = response.content.decode('utf8')
 
         self.assertTrue(html.startswith('<html>'))
