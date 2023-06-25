@@ -4,28 +4,24 @@
 
 {% block content %}
 
-    <div class="container">
-        <div class="blog">
-            <div class="row">
-                <div clas="col">
-                    <div class="avatar"><h1>Алексей Стогов</h1></div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div clas="col-md-8 col-sm-12">
+
+
+        <div class="row">
+            <div class="col-md-8 col-sm-12">
+                <div class="article-list">
                     <div class="article-list">
-                        <div class="article">
-                            {% for article in articles %}
-                                <div class="article">
-                                        <a href="{{article.get_absolute_url}}"><h1 class="article-title">{{ article.title}}</h1></a>
-                                    <p class="article-summary">{{ article.summary}}></p>
-                                    </div>
-                            {% endfor %}
-                        </div>
+                        {% for article in articles %}
+                            <div class="article">
+                                <h2 class="article-title">
+                                    <a href="{{article.get_absolute_url}}">{{ article.title}}</a>
+                                </h2>
+                                <p class="article-summary">{{ article.summary}}></p>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
 {% endblock %}
